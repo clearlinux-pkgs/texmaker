@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 2
+Release  : 3
 URL      : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Source0  : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Summary  : Free cross-platform LaTeX editor
