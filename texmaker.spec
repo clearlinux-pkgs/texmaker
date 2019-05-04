@@ -4,10 +4,10 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 4
+Release  : 5
 URL      : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Source0  : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
-Summary  : Free cross-platform LaTeX editor
+Summary  : LaTeX editor
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-2.0+
 Requires: texmaker-bin = %{version}-%{release}
@@ -70,7 +70,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1549658340
+export SOURCE_DATE_EPOCH=1556946590
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
 cp debian/copyright %{buildroot}/usr/share/package-licenses/texmaker/debian_copyright
