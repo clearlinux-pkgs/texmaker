@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 5
+Release  : 6
 URL      : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Source0  : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Summary  : LaTeX editor
