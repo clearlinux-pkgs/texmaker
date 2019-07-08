@@ -4,12 +4,12 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 6
+Release  : 7
 URL      : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Source0  : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Summary  : LaTeX editor
 Group    : Development/Tools
-License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-2.0+
+License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-2.0+ LGPL-2.0 MPL-1.1
 Requires: texmaker-bin = %{version}-%{release}
 Requires: texmaker-data = %{version}-%{release}
 Requires: texmaker-license = %{version}-%{release}
@@ -25,6 +25,10 @@ BuildRequires : pkgconfig(Qt5Script)
 BuildRequires : pkgconfig(Qt5WebEngineWidgets)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5Xml)
+Patch1: CVE-2016-9840.patch
+Patch2: CVE-2016-9841.patch
+Patch3: CVE-2016-9842.patch
+Patch4: CVE-2016-9843.patch
 
 %description
 Texmaker is a clean, highly configurable LaTeX editor with good hot key 
@@ -59,25 +63,37 @@ license components for the texmaker package.
 
 %prep
 %setup -q -n texmaker-5.0.3
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-%qmake
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+%qmake QMAKE_CFLAGS+=-fno-lto QMAKE_CXXFLAGS+=-fno-lto
 test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1556946590
+export SOURCE_DATE_EPOCH=1562597448
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
 cp debian/copyright %{buildroot}/usr/share/package-licenses/texmaker/debian_copyright
+cp hunspell/license.hunspell %{buildroot}/usr/share/package-licenses/texmaker/hunspell_license.hunspell
 cp hunspell/license.myspell %{buildroot}/usr/share/package-licenses/texmaker/hunspell_license.myspell
+cp license.txt %{buildroot}/usr/share/package-licenses/texmaker/license.txt
 cp pdfium/LICENSE %{buildroot}/usr/share/package-licenses/texmaker/pdfium_LICENSE
 cp pdfium/third_party/pymock/LICENSE.txt %{buildroot}/usr/share/package-licenses/texmaker/pdfium_third_party_pymock_LICENSE.txt
 cp utilities/COPYING %{buildroot}/usr/share/package-licenses/texmaker/utilities_COPYING
+cp utilities/license.txt %{buildroot}/usr/share/package-licenses/texmaker/utilities_license.txt
 cp utilities/license_html.txt %{buildroot}/usr/share/package-licenses/texmaker/utilities_license_html.txt
 %make_install
 
@@ -214,8 +230,11 @@ cp utilities/license_html.txt %{buildroot}/usr/share/package-licenses/texmaker/u
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/texmaker/debian_copyright
+/usr/share/package-licenses/texmaker/hunspell_license.hunspell
 /usr/share/package-licenses/texmaker/hunspell_license.myspell
+/usr/share/package-licenses/texmaker/license.txt
 /usr/share/package-licenses/texmaker/pdfium_LICENSE
 /usr/share/package-licenses/texmaker/pdfium_third_party_pymock_LICENSE.txt
 /usr/share/package-licenses/texmaker/utilities_COPYING
+/usr/share/package-licenses/texmaker/utilities_license.txt
 /usr/share/package-licenses/texmaker/utilities_license_html.txt
