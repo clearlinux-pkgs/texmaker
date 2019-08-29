@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 7
+Release  : 8
 URL      : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Source0  : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Summary  : LaTeX editor
@@ -29,6 +29,10 @@ Patch1: CVE-2016-9840.patch
 Patch2: CVE-2016-9841.patch
 Patch3: CVE-2016-9842.patch
 Patch4: CVE-2016-9843.patch
+Patch5: CVE-2016-10504.patch
+Patch6: CVE-2016-10506.patch
+Patch7: CVE-2016-4797.patch
+Patch8: CVE-2016-1924.patch
 
 %description
 Texmaker is a clean, highly configurable LaTeX editor with good hot key 
@@ -67,12 +71,16 @@ license components for the texmaker package.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -83,7 +91,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1562597448
+export SOURCE_DATE_EPOCH=1567056213
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
 cp debian/copyright %{buildroot}/usr/share/package-licenses/texmaker/debian_copyright
