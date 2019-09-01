@@ -4,9 +4,9 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 8
-URL      : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
-Source0  : http://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
+Release  : 9
+URL      : https://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
+Source0  : https://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Summary  : LaTeX editor
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-2.0+ LGPL-2.0 MPL-1.1
@@ -91,7 +91,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1567056213
+export SOURCE_DATE_EPOCH=1567297111
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
 cp debian/copyright %{buildroot}/usr/share/package-licenses/texmaker/debian_copyright
