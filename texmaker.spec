@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.3
-Release  : 9
+Release  : 10
 URL      : https://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Source0  : https://www.xm1math.net/texmaker/texmaker-5.0.3.tar.bz2
 Summary  : LaTeX editor
@@ -33,6 +33,7 @@ Patch5: CVE-2016-10504.patch
 Patch6: CVE-2016-10506.patch
 Patch7: CVE-2016-4797.patch
 Patch8: CVE-2016-1924.patch
+Patch9: CVE-2015-9383.patch
 
 %description
 Texmaker is a clean, highly configurable LaTeX editor with good hot key 
@@ -75,6 +76,7 @@ license components for the texmaker package.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -91,7 +93,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1567297111
+export SOURCE_DATE_EPOCH=1568305427
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
 cp debian/copyright %{buildroot}/usr/share/package-licenses/texmaker/debian_copyright
