@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.4
-Release  : 18
+Release  : 19
 URL      : https://www.xm1math.net/texmaker/texmaker-5.0.4.tar.bz2
 Source0  : https://www.xm1math.net/texmaker/texmaker-5.0.4.tar.bz2
 Summary  : LaTeX editor
@@ -34,6 +34,7 @@ Patch6: CVE-2016-10506.patch
 Patch7: CVE-2016-4797.patch
 Patch8: CVE-2016-1924.patch
 Patch9: CVE-2015-9383.patch
+Patch10: CVE-2020-14152.patch
 
 %description
 Texmaker is a clean, highly configurable LaTeX editor with good hot key 
@@ -78,6 +79,7 @@ cd %{_builddir}/texmaker-5.0.4
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -86,15 +88,15 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %qmake QMAKE_CFLAGS+=-fno-lto QMAKE_CXXFLAGS+=-fno-lto
 test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1585684683
+export SOURCE_DATE_EPOCH=1603419870
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
 cp %{_builddir}/texmaker-5.0.4/hunspell/license.hunspell %{buildroot}/usr/share/package-licenses/texmaker/dc7fe56513b78c0b3178bbea47d0770614d962ad
