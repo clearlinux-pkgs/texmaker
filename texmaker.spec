@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.4
-Release  : 19
+Release  : 20
 URL      : https://www.xm1math.net/texmaker/texmaker-5.0.4.tar.bz2
 Source0  : https://www.xm1math.net/texmaker/texmaker-5.0.4.tar.bz2
 Summary  : LaTeX editor
@@ -87,10 +87,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$FFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$FFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -fzero-call-used-regs=used "
 %qmake QMAKE_CFLAGS+=-fno-lto QMAKE_CXXFLAGS+=-fno-lto
 test -r config.log && cat config.log
 make  %{?_smp_mflags}
