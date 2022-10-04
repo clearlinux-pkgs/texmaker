@@ -4,7 +4,7 @@
 #
 Name     : texmaker
 Version  : 5.0.4
-Release  : 21
+Release  : 22
 URL      : https://www.xm1math.net/texmaker/texmaker-5.0.4.tar.bz2
 Source0  : https://www.xm1math.net/texmaker/texmaker-5.0.4.tar.bz2
 Summary  : LaTeX editor
@@ -96,17 +96,17 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1603419870
+export SOURCE_DATE_EPOCH=1664898775
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/texmaker
-cp %{_builddir}/texmaker-5.0.4/hunspell/license.hunspell %{buildroot}/usr/share/package-licenses/texmaker/dc7fe56513b78c0b3178bbea47d0770614d962ad
-cp %{_builddir}/texmaker-5.0.4/hunspell/license.myspell %{buildroot}/usr/share/package-licenses/texmaker/a897c88546c86e1f1eaebd89bc101404d51e81cc
-cp %{_builddir}/texmaker-5.0.4/license.txt %{buildroot}/usr/share/package-licenses/texmaker/0b0249b0fdc22a55c9ebb98ce74ae136487e4679
-cp %{_builddir}/texmaker-5.0.4/pdfium/LICENSE %{buildroot}/usr/share/package-licenses/texmaker/689c532308da601d10beba61b6672b0c16dc3b48
-cp %{_builddir}/texmaker-5.0.4/pdfium/third_party/pymock/LICENSE.txt %{buildroot}/usr/share/package-licenses/texmaker/794a893e510ca5c15c9c97a609ce47b0df74fc1a
-cp %{_builddir}/texmaker-5.0.4/utilities/COPYING %{buildroot}/usr/share/package-licenses/texmaker/2d29c273fda30310211bbf6a24127d589be09b6c
-cp %{_builddir}/texmaker-5.0.4/utilities/license.txt %{buildroot}/usr/share/package-licenses/texmaker/0b0249b0fdc22a55c9ebb98ce74ae136487e4679
-cp %{_builddir}/texmaker-5.0.4/utilities/license_html.txt %{buildroot}/usr/share/package-licenses/texmaker/14b52b17238af3275260353bcbde8b4d950db8e6
+cp %{_builddir}/texmaker-%{version}/hunspell/license.hunspell %{buildroot}/usr/share/package-licenses/texmaker/dc7fe56513b78c0b3178bbea47d0770614d962ad || :
+cp %{_builddir}/texmaker-%{version}/hunspell/license.myspell %{buildroot}/usr/share/package-licenses/texmaker/a897c88546c86e1f1eaebd89bc101404d51e81cc || :
+cp %{_builddir}/texmaker-%{version}/license.txt %{buildroot}/usr/share/package-licenses/texmaker/0b0249b0fdc22a55c9ebb98ce74ae136487e4679 || :
+cp %{_builddir}/texmaker-%{version}/pdfium/LICENSE %{buildroot}/usr/share/package-licenses/texmaker/689c532308da601d10beba61b6672b0c16dc3b48 || :
+cp %{_builddir}/texmaker-%{version}/pdfium/third_party/pymock/LICENSE.txt %{buildroot}/usr/share/package-licenses/texmaker/794a893e510ca5c15c9c97a609ce47b0df74fc1a || :
+cp %{_builddir}/texmaker-%{version}/utilities/COPYING %{buildroot}/usr/share/package-licenses/texmaker/2d29c273fda30310211bbf6a24127d589be09b6c || :
+cp %{_builddir}/texmaker-%{version}/utilities/license.txt %{buildroot}/usr/share/package-licenses/texmaker/0b0249b0fdc22a55c9ebb98ce74ae136487e4679 || :
+cp %{_builddir}/texmaker-%{version}/utilities/license_html.txt %{buildroot}/usr/share/package-licenses/texmaker/14b52b17238af3275260353bcbde8b4d950db8e6 || :
 %make_install
 
 %files
